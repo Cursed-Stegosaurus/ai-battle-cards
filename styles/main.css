@@ -113,8 +113,8 @@ body {
 
 /* Footer */
 .main-footer {
-  text-align: center;
-  padding: 2rem 0;
+  text-align: right;
+  padding: 2rem 2rem 2rem 0;
 }
 
 .substack-link {
