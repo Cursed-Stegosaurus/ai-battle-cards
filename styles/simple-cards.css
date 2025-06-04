@@ -38,6 +38,27 @@
   box-shadow: 0 6px 12px var(--shadow-color);
 }
 
+/* Substack Link in Preview Section */
+.substack-section {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245, 233, 197, 0.2);
+  text-align: center;
+}
+
+.substack-link {
+  color: var(--highlight);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.substack-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 /* Remove complex 3D styles that are causing issues */
 .card-container,
 .card,

@@ -10,6 +10,7 @@ class SimpleCardApp {
       await this.loadCards();
       this.renderCards();
       this.setupEventListeners();
+      this.clearPreview(); // Initialize preview with card back
     } catch (error) {
       console.error('Failed to initialize app:', error);
       this.showError('Failed to load cards. Please refresh the page.');
@@ -134,7 +135,7 @@ class SimpleCardApp {
     const descElement = document.querySelector('.card-description');
     const metadataElement = document.querySelector('.card-metadata');
 
-    if (previewImg) previewImg.src = '';
+    if (previewImg) previewImg.src = 'Cards/card back.jpg'; // Show card back by default
     if (titleElement) titleElement.textContent = 'Select a card to preview';
     if (descElement) descElement.textContent = '';
     if (metadataElement) metadataElement.innerHTML = '';
