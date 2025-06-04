@@ -39,7 +39,7 @@ class CardManager {
     container.dataset.id = card.id;
 
     const cardElement = document.createElement('div');
-    cardElement.className = 'card flipped';
+    cardElement.className = 'card';
 
     // Front face - show the actual card image
     const frontFace = document.createElement('div');
@@ -86,20 +86,20 @@ class CardManager {
       return;
     }
 
-    // Reset previous selection - put back in flipped state (showing back)
+    // Reset previous selection - show front again
     if (this.selectedCardId) {
       const prevCard = this.cards.get(this.selectedCardId);
       if (prevCard) {
         prevCard.element.classList.remove('selected');
-        prevCard.element.querySelector('.card').classList.add('flipped');
+        prevCard.element.querySelector('.card').classList.remove('flipped');
       }
     }
 
-    // Set new selection - unflip to show front
+    // Set new selection - flip to show back
     const newCard = this.cards.get(cardId);
     if (newCard) {
       newCard.element.classList.add('selected');
-      newCard.element.querySelector('.card').classList.remove('flipped');
+      newCard.element.querySelector('.card').classList.add('flipped');
       this.selectedCardId = cardId;
       this.updatePreview(newCard.data);
     }
@@ -111,7 +111,7 @@ class CardManager {
       const card = this.cards.get(this.selectedCardId);
       if (card) {
         card.element.classList.remove('selected');
-        card.element.querySelector('.card').classList.add('flipped');
+        card.element.querySelector('.card').classList.remove('flipped');
       }
       this.selectedCardId = null;
       this.clearPreview();

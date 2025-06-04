@@ -17,8 +17,14 @@ class LocalLoader {
   }
 
   // Get image URL for local development
-  getImageUrl(imageName) {
-    return `${this.config.local.imageFolder}/${imageName}`;
+  getImageUrl(imagePath) {
+    // If the path already includes a folder (like "Cards/Artificer.jpg"), use it directly
+    // If it's just a filename (like "card back.jpg"), add the image folder prefix
+    if (imagePath.includes('/')) {
+      return imagePath; // Path already includes folder
+    } else {
+      return `${this.config.local.imageFolder}/${imagePath}`;
+    }
   }
 
   // Load a single image
@@ -49,16 +55,14 @@ class LocalLoader {
     try {
       const cardData = await this.loadCardData();
       const imageNames = new Set();
-      // Collect all image names
+      // Collect all image names from the processed card data
       cardData.forEach(card => {
-        imageNames.add(`${card.id}.jpg`);
-        imageNames.add(this.config.local.cardBackImage);
+        imageNames.add(card.frontImage); // This will be "Cards/Artificer.jpg" etc.
+        imageNames.add(card.backImage);   // This will be "card back.jpg"
       });
-      // Add card back image
-      imageNames.add(this.config.local.cardBackImage);
       // Load all images
       await Promise.all(
-        Array.from(imageNames).map(name => this.loadImage(name))
+        Array.from(imageNames).map(imagePath => this.loadImage(imagePath))
       );
     } catch (error) {
       console.error('Image preloading failed:', error);
@@ -90,15 +94,38 @@ class LocalLoader {
     return rawData.map(item => ({
       id: item.id,
       title: item.title,
-      model: item.model,
-      vendor: item.vendor,
-      idealFor: item.idealFor,
-      starterPrompt: item.starterPrompt,
-      nextLevelPrompt: item.nextLevelPrompt,
-      reflectionQuestion: item.reflectionQuestion,
-      frontImage: `${item.id}.jpg`,
+      model: this.extractModelFromTitle(item.title),
+      vendor: this.extractVendorFromTitle(item.title),
+      idealFor: item.what,
+      starterPrompt: item.why,
+      nextLevelPrompt: Array.isArray(item.when) ? item.when.join(', ') : item.when,
+      reflectionQuestion: item.watch,
+      frontImage: item.front,
       backImage: this.config.local.cardBackImage
     }));
+  }
+
+  // Helper method to extract model name from title
+  extractModelFromTitle(title) {
+    const parts = title.split(' - ');
+    return parts.length > 1 ? parts[1] : title;
+  }
+
+  // Helper method to extract vendor from model name
+  extractVendorFromTitle(title) {
+    const model = this.extractModelFromTitle(title);
+    if (model.includes('ChatGPT') || model.includes('GPT')) return 'OpenAI';
+    if (model.includes('Claude')) return 'Anthropic';
+    if (model.includes('Gemini')) return 'Google';
+    if (model.includes('DeepSeek')) return 'DeepSeek';
+    if (model.includes('Mixtral')) return 'Mistral';
+    if (model.includes('Yi-')) return '01.AI';
+    if (model.includes('Command')) return 'Cohere';
+    if (model.includes('Llama')) return 'Meta';
+    if (model.includes('Mistral')) return 'Mistral';
+    if (model.includes('Grok')) return 'xAI';
+    if (model.includes('Perplexity')) return 'Perplexity';
+    return 'Unknown';
   }
 
   // Clear cache
