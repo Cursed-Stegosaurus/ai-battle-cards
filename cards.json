@@ -1,0 +1,210 @@
+[
+  {
+    "id": "Artificer",
+    "title": "Artificer - ChatGPT o3",
+    "front": "Cards/Artificer.jpg",
+    "what": "OpenAI’s o3 is the most reasoning-dense public model.",
+    "why": "Daily driver for tasks where absolute correctness matters.",
+    "when": [
+      "Designing data schemas",
+      "Debugging opaque stack traces",
+      "Writing memos where wrong math is reputationally fatal"
+    ],
+    "watch": "Slower and pricier than mid-range models."
+  },
+  {
+    "id": "Companion",
+    "title": "Companion - ChatGPT 4o",
+    "front": "Cards/Companion.jpg",
+    "what": "Omni model for text, voice and vision with low latency.",
+    "why": "Instant helper for notes, brainstorming and photo quick-fixes.",
+    "when": [
+      "Annotating screenshots",
+      "Explaining a diagram by voice",
+      "Writing a polite reply before boarding a plane"
+    ],
+    "watch": "Skips edge-case rigor; hand tough work to Artificer or Strategist."
+  },
+  {
+    "id": "Strategist",
+    "title": "Strategist - GPT 4.1",
+    "front": "Cards/Strategist.jpg",
+    "what": "Successor to GPT-4 Turbo with sharper long-range reasoning.",
+    "why": "Best when the solution’s overall shape matters more than details.",
+    "when": [
+      "Causal diagrams",
+      "OKR roll-downs",
+      "Competitive-landscape memos"
+    ],
+    "watch": "Higher token cost; 256 k context ceiling."
+  },
+  {
+    "id": "Prodigy",
+    "title": "Prodigy - GPT 4.5 preview",
+    "front": "Cards/Prodigy.jpg",
+    "what": "Early peek at GPT-4.5—smart, capable, and short-lived.",
+    "why": "Let users sample the future before GPT-5 arrives.",
+    "when": [
+      "Creative writing",
+      "EQ conversations",
+      "Writing critique"
+    ],
+    "watch": "Preview may vanish without notice."
+  },
+  {
+    "id": "Polymath",
+    "title": "Polymath - Claude 4 Opus",
+    "front": "Cards/Polymath.jpg",
+    "what": "Anthropic’s largest model for graceful prose and complex code.",
+    "why": "Balances technical rigor with executive-ready polish.",
+    "when": [
+      "Complex refactors",
+      "Policy drafts",
+      "Consultant-style playbooks"
+    ],
+    "watch": "Narrower tool-calling APIs; can stall in long chats."
+  },
+  {
+    "id": "Composer",
+    "title": "Composer - Claude 3.5 Sonnet",
+    "front": "Cards/Composer.jpg",
+    "what": "Fast mid-tier Claude tuned for on-brand voice and code.",
+    "why": "Speed plus style for live edits and rapid refactors.",
+    "when": [
+      "Real-time writing coach",
+      "Tone-matching executive summaries",
+      "Rapid code patches with explanations"
+    ],
+    "watch": "Hard problems still belong to Opus or Artificer."
+  },
+  {
+    "id": "Oracle",
+    "title": "Oracle - Gemini 2.5 Pro / Ultra",
+    "front": "Cards/Oracle.jpg",
+    "what": "Google flagship with million-token context and fact-checking.",
+    "why": "Only model that can read a mountain of PDFs in one pass.",
+    "when": [
+      "Cross-checking stats",
+      "Summarising litigation troves",
+      "Turning whole wikis into one-pagers"
+    ],
+    "watch": "Occasionally over-cautious; have Strategist tighten conclusions."
+  },
+  {
+    "id": "Scholar",
+    "title": "Scholar - ChatGPT Deep Research",
+    "front": "Cards/Scholar.jpg",
+    "what": "OpenAI variant tuned for long, self-directed research runs.",
+    "why": "Acts like a grad-student delivering cited mini literature reviews.",
+    "when": [
+      "Competitive landscapes",
+      "Historical chronologies",
+      "Explain-like-I’m-new reports with sources"
+    ],
+    "watch": "Not interactive in real time."
+  },
+  {
+    "id": "Prospector",
+    "title": "Prospector - DeepSeek R1",
+    "front": "Cards/Prospector.jpg",
+    "what": "Chinese open model cracking top-10 code benchmarks on a budget.",
+    "why": "High-volume generation or bilingual STEM work without GPT prices.",
+    "when": [
+      "Bulk code stubs",
+      "STEM problem sets",
+      "Bilingual chatbot demos"
+    ],
+    "watch": "Tough terms of service for US/EU businesses."
+  },
+  {
+    "id": "Collective",
+    "title": "Collective - Mixtral 8×22B",
+    "front": "Cards/Collective.jpg",
+    "what": "Open Mixture-of-Experts where eight subnetworks vote per token.",
+    "why": "Near-Claude quality while staying fully open-weight.",
+    "when": [
+      "Self-hosted knowledge bots",
+      "On-prem RAG stacks",
+      "Fast fine-tunes with low GPU budget"
+    ],
+    "watch": "MoE routing can misfire; heavier model-loading logistics."
+  },
+  {
+    "id": "Voyager",
+    "title": "Voyager - Yi-1.5 200B",
+    "front": "Cards/Voyager.jpg",
+    "what": "Large bilingual model (EN/ZH) with permissive license.",
+    "why": "Bridges English and Chinese users without juggling two vendors.",
+    "when": [
+      "Cross-border product copy",
+      "Dual-language knowledge bases",
+      "Fine-tunes for APAC markets"
+    ],
+    "watch": "High GPU memory; English tone slightly stiff."
+  },
+  {
+    "id": "Diplomat",
+    "title": "Diplomat - Cohere Command R+",
+    "front": "Cards/Diplomat.jpg",
+    "what": "Enterprise-tuned model optimised for RAG and tool use.",
+    "why": "Plugs straight into long corporate docs and workflows.",
+    "when": [
+      "Internal knowledge bots",
+      "Compliance summaries",
+      "Multi-step workflows"
+    ],
+    "watch": "Better at workflows than marketing copy."
+  },
+  {
+    "id": "Commons",
+    "title": "Commons - Llama 3 405B",
+    "front": "Cards/Commons.jpg",
+    "what": "Meta’s largest open model—ChatGPT-3.5 quality you can own.",
+    "why": "Default for startups and academia needing control and fine-tunes.",
+    "when": [
+      "Private-cloud assistants",
+      "Domain-specific fine-tunes",
+      "Academic experiments"
+    ],
+    "watch": "No built-in tools API."
+  },
+  {
+    "id": "Navigator",
+    "title": "Navigator - Mistral Large",
+    "front": "Cards/Navigator.jpg",
+    "what": "EU-friendly large model with strong coding and inference.",
+    "why": "Instruction following across many languages at moderate cost.",
+    "when": [
+      "Code generation",
+      "Inference pipelines",
+      "Multi-lingual assistants"
+    ],
+    "watch": "Not a top-3 performer for deep analysis."
+  },
+  {
+    "id": "Maverick",
+    "title": "Maverick - Grok-2",
+    "front": "Cards/Maverick.jpg",
+    "what": "xAI’s personality-forward model with real-time info access.",
+    "why": "Great for free-wheeling ideation and staying up to date on X.",
+    "when": [
+      "Brainstorm sessions",
+      "Creative problem-solving",
+      "Live coding with humour"
+    ],
+    "watch": "Can veer informal; known alignment gaps."
+  },
+  {
+    "id": "Scout",
+    "title": "Scout - Perplexity Sonar",
+    "front": "Cards/Scout.jpg",
+    "what": "Retrieval-native model that always cites sources.",
+    "why": "Fastest way to get a sourced bullet list on short notice.",
+    "when": [
+      "Quick news briefs",
+      "Finding recent papers",
+      "Pre-meeting fact scouting"
+    ],
+    "watch": "Depends on live web access; built for search."
+  }
+]

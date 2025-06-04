@@ -1,0 +1,10 @@
+{
+  "name": "ai-battle-cards",
+  "version": "1.0.0",
+  "description": "Nate's AI Battle Cards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+} 

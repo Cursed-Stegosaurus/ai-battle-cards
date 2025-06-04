@@ -1,0 +1,146 @@
+[
+  {
+    "Card": "Collective",
+    "Model (Vendor)": "Mixtral 8\u00d722B (Mistral)",
+    "Ideal for": "Open-source, privacy-sensitive work",
+    "Starter Prompt": "Summarise the last 10 customer-support tickets (paste text) into a table.",
+    "Next-level Prompt": "Generate sentiment scores for each ticket.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Did it miss any complaint themes?"
+  },
+  {
+    "Card": "Voyager",
+    "Model (Vendor)": "Yi-1.5 200B",
+    "Ideal for": "Cross-border EN\u2194ZH comms",
+    "Starter Prompt": "Translate this LinkedIn post into simplified Chinese.",
+    "Next-level Prompt": "Suggest 3 localization tweaks for cultural resonance.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Which tweak feels most natural?"
+  },
+  {
+    "Card": "Diplomat",
+    "Model (Vendor)": "Cohere Command R+",
+    "Ideal for": "Long-doc Q&A in enterprise tone",
+    "Starter Prompt": "Does the employee handbook allow remote work abroad? (paste excerpt).",
+    "Next-level Prompt": "Follow the handbook when responding to the customer query. (checks RAG)",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Is the language clear yet compliant?"
+  },
+  {
+    "Card": "Commons",
+    "Model (Vendor)": "Llama 3 405B (Meta)",
+    "Ideal for": "Full-control fine-tuning sandbox",
+    "Starter Prompt": "Search my local files for patterns across my last 50 meetings.",
+    "Next-level Prompt": "Brainstorm a complex multi-step RAG architecture and help me build it.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Would you tweak any answer before publishing?"
+  },
+  {
+    "Card": "Navigator",
+    "Model (Vendor)": "Mistral Large",
+    "Ideal for": "Multilingual text at low latency",
+    "Starter Prompt": "Translate \u2018Your order has shipped\u2019 into FR, DE, ES, PT.",
+    "Next-level Prompt": "Provide a short apology version for delays.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Do translations feel customer-friendly?"
+  },
+  {
+    "Card": "Maverick",
+    "Model (Vendor)": "Grok-2 (xAI)",
+    "Ideal for": "Long-context brainstorming w/ attitude",
+    "Starter Prompt": "Invent unconventional marketing stunts for a small coffee roaster.",
+    "Next-level Prompt": "Help me plan out the following 15 page legal brief.",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Which idea is feasible vs. just fun?"
+  },
+  {
+    "Card": "Scout",
+    "Model (Vendor)": "Perplexity Sonar",
+    "Ideal for": "Fast, cited fact scans",
+    "Starter Prompt": "What\u2019s the current 30-yr fixed mortgage rate? Cite two sources.",
+    "Next-level Prompt": "Compare today\u2019s rate to the 5-yr average.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Were the links authoritative? Why / why not?"
+  },
+  {
+    "Card": "Artificer",
+    "Model (Vendor)": "ChatGPT-o3 (OpenAI)",
+    "Ideal for": "Rigorous analysis & technical builds",
+    "Starter Prompt": "Create a three-tab Google-Sheets budget with formulas for fixed vs. variable expenses.",
+    "Next-level Prompt": "Now turn that sheet into a monthly line-chart dashboard.",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Did the math check out? Where would you edit?"
+  },
+  {
+    "Card": "Companion",
+    "Model (Vendor)": "ChatGPT-4o (OpenAI)",
+    "Ideal for": "Warm, fast help (voice/vision)",
+    "Starter Prompt": "Rewrite this rough Slack message so it\u2019s friendly but decisive.",
+    "Next-level Prompt": "Record a 20-sec voice note: \u201cShorten the reply further.\u201d",
+    "$/Quota*": "\u23f1",
+    "Reflection Question": "Does the tone still sound like you?"
+  },
+  {
+    "Card": "Strategist",
+    "Model (Vendor)": "GPT-4.1 (OpenAI)",
+    "Ideal for": "Pros & cons, long-range plans",
+    "Starter Prompt": "Can you code this calculator module for me? Add scientific notation.",
+    "Next-level Prompt": "Draft this module in line with my coding requirements, business rules, and dependencies (list).",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Did it surface risks you hadn\u2019t considered?"
+  },
+  {
+    "Card": "Prodigy",
+    "Model (Vendor)": "GPT-4.5 preview (OpenAI)",
+    "Ideal for": "Smart and empathetic responses",
+    "Starter Prompt": "Can you help me wrestle with this short story idea?",
+    "Next-level Prompt": "Write short story.",
+    "$/Quota*": "\u23f1",
+    "Reflection Question": "Which title hooked you? Why?"
+  },
+  {
+    "Card": "Polymath",
+    "Model (Vendor)": "Claude-4 Opus (Anthropic)",
+    "Ideal for": "Executive emails & well-commented code",
+    "Starter Prompt": "Can you build me a briefing dashboard for tomorrow?",
+    "Next-level Prompt": "Refactor this 20-line script and comment each step.",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Does the wording feel human or too formal?"
+  },
+  {
+    "Card": "Composer",
+    "Model (Vendor)": "Claude 3.5 Sonnet (Anthropic)",
+    "Ideal for": "Rapid copy edits & slide polish",
+    "Starter Prompt": "Turn these bullet points into three concise slide headlines.",
+    "Next-level Prompt": "Give me a catchy opener sentence for the deck.",
+    "$/Quota*": "\u23f1",
+    "Reflection Question": "Did it keep all key ideas intact?"
+  },
+  {
+    "Card": "Oracle",
+    "Model (Vendor)": "Gemini 2.5 Pro (Google)",
+    "Ideal for": "Digesting & fact-checking long docs",
+    "Starter Prompt": "Read this 30-page PDF (link) and list 5 key risks, with sources.",
+    "Next-level Prompt": "Compare those risks to a second PDF and highlight overlaps.",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Were the citations relevant and credible?"
+  },
+  {
+    "Card": "Scholar",
+    "Model (Vendor)": "ChatGPT Deep Research",
+    "Ideal for": "15-min autonomous research dives",
+    "Starter Prompt": "Return with 300 reputable sources on intermittent-fasting benefits for adults 40+.",
+    "Next-level Prompt": "Write an 80 page document on incorporation forms in the EU and US.",
+    "$/Quota*": "\ud83d\udcb0",
+    "Reflection Question": "Did it balance pros & cons fairly?"
+  },
+  {
+    "Card": "Prospector",
+    "Model (Vendor)": "DeepSeek R1",
+    "Ideal for": "Budget coding & bilingual EN/\u4e2d\u6587",
+    "Starter Prompt": "Convert this CSV to JSON in Python, then comment the code in Chinese.",
+    "Next-level Prompt": "Add error handling and an English README.",
+    "$/Quota*": "\u2013",
+    "Reflection Question": "Is the Chinese natural and clear?"
+  }
+]
