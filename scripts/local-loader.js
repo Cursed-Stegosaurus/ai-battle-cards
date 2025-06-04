@@ -3,6 +3,7 @@ class LocalLoader {
     this.config = config;
     this.imageCache = new Map();
     this.dataCache = null;
+    this.defaultImage = 'default.jpg'; // Add a default image in Cards/ if desired
   }
 
   // Initialize the loader
@@ -18,11 +19,18 @@ class LocalLoader {
 
   // Get image URL for local development
   getImageUrl(imageName) {
+    if (!imageName || imageName === 'undefined') {
+      console.warn('Missing image name, using default image.');
+      imageName = this.defaultImage;
+    }
     return `${this.config.local.imageFolder}/${imageName}`;
   }
 
   // Load a single image
   async loadImage(imageName) {
+    if (!imageName || imageName === 'undefined') {
+      imageName = this.defaultImage;
+    }
     if (this.imageCache.has(imageName)) {
       return this.imageCache.get(imageName);
     }
@@ -37,7 +45,7 @@ class LocalLoader {
       };
       
       img.onerror = () => {
-        reject(new Error(APP_CONFIG.errors.imageLoadFailed));
+        reject(new Error(APP_CONFIG.errors?.imageLoadFailed || 'Failed to load card image'));
       };
       
       img.src = url;
@@ -52,12 +60,13 @@ class LocalLoader {
       
       // Collect all image names
       cardData.forEach(card => {
-        imageNames.add(card.frontImage);
-        imageNames.add(card.backImage);
+        imageNames.add(card.frontImage || this.defaultImage);
+        imageNames.add(card.backImage || this.defaultImage);
       });
       
       // Add card back image
       imageNames.add(this.config.local.cardBackImage);
+      imageNames.add(this.defaultImage);
       
       // Load all images
       await Promise.all(
@@ -102,8 +111,8 @@ class LocalLoader {
       starterPrompt: item.starterPrompt,
       nextLevelPrompt: item.nextLevelPrompt,
       reflectionQuestion: item.reflectionQuestion,
-      frontImage: item.frontImage,
-      backImage: this.config.local.cardBackImage
+      frontImage: item.frontImage || this.defaultImage,
+      backImage: this.config.local.cardBackImage || this.defaultImage
     }));
   }
 
