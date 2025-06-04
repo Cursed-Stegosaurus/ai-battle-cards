@@ -39,9 +39,9 @@ class CardManager {
     container.dataset.id = card.id;
 
     const cardElement = document.createElement('div');
-    cardElement.className = 'card';
+    cardElement.className = 'card flipped';
 
-    // Front face
+    // Front face - show the actual card image
     const frontFace = document.createElement('div');
     frontFace.className = 'card-face card-front';
     const frontImg = document.createElement('img');
@@ -49,7 +49,7 @@ class CardManager {
     frontImg.alt = card.title;
     frontFace.appendChild(frontImg);
 
-    // Back face
+    // Back face - show the generic card back
     const backFace = document.createElement('div');
     backFace.className = 'card-face card-back';
     const backImg = document.createElement('img');
@@ -86,20 +86,20 @@ class CardManager {
       return;
     }
 
-    // Reset previous selection
+    // Reset previous selection - put back in flipped state (showing back)
     if (this.selectedCardId) {
       const prevCard = this.cards.get(this.selectedCardId);
       if (prevCard) {
         prevCard.element.classList.remove('selected');
-        prevCard.element.querySelector('.card').classList.remove('flipped');
+        prevCard.element.querySelector('.card').classList.add('flipped');
       }
     }
 
-    // Set new selection
+    // Set new selection - unflip to show front
     const newCard = this.cards.get(cardId);
     if (newCard) {
       newCard.element.classList.add('selected');
-      newCard.element.querySelector('.card').classList.add('flipped');
+      newCard.element.querySelector('.card').classList.remove('flipped');
       this.selectedCardId = cardId;
       this.updatePreview(newCard.data);
     }
@@ -111,7 +111,7 @@ class CardManager {
       const card = this.cards.get(this.selectedCardId);
       if (card) {
         card.element.classList.remove('selected');
-        card.element.querySelector('.card').classList.remove('flipped');
+        card.element.querySelector('.card').classList.add('flipped');
       }
       this.selectedCardId = null;
       this.clearPreview();
