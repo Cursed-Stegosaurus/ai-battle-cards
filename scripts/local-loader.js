@@ -3,7 +3,6 @@ class LocalLoader {
     this.config = config;
     this.imageCache = new Map();
     this.dataCache = null;
-    this.defaultImage = 'default.jpg'; // Add a default image in Cards/ if desired
   }
 
   // Initialize the loader
@@ -19,17 +18,13 @@ class LocalLoader {
 
   // Get image URL for local development
   getImageUrl(imageName) {
-    if (!imageName || imageName === 'undefined') {
-      console.warn('Missing image name, using default image.');
-      imageName = this.defaultImage;
-    }
     return `${this.config.local.imageFolder}/${imageName}`;
   }
 
   // Load a single image
   async loadImage(imageName) {
-    if (!imageName || imageName === 'undefined') {
-      imageName = this.defaultImage;
+    if (!imageName) {
+      throw new Error('Missing image name for card');
     }
     if (this.imageCache.has(imageName)) {
       return this.imageCache.get(imageName);
@@ -38,16 +33,13 @@ class LocalLoader {
     const url = this.getImageUrl(imageName);
     return new Promise((resolve, reject) => {
       const img = new Image();
-      
       img.onload = () => {
         this.imageCache.set(imageName, img);
         resolve(img);
       };
-      
       img.onerror = () => {
         reject(new Error(APP_CONFIG.errors?.imageLoadFailed || 'Failed to load card image'));
       };
-      
       img.src = url;
     });
   }
@@ -57,17 +49,13 @@ class LocalLoader {
     try {
       const cardData = await this.loadCardData();
       const imageNames = new Set();
-      
       // Collect all image names
       cardData.forEach(card => {
-        imageNames.add(card.frontImage || this.defaultImage);
-        imageNames.add(card.backImage || this.defaultImage);
+        imageNames.add(`${card.id}.jpg`);
+        imageNames.add(this.config.local.cardBackImage);
       });
-      
       // Add card back image
       imageNames.add(this.config.local.cardBackImage);
-      imageNames.add(this.defaultImage);
-      
       // Load all images
       await Promise.all(
         Array.from(imageNames).map(name => this.loadImage(name))
@@ -83,14 +71,11 @@ class LocalLoader {
     if (this.dataCache) {
       return this.dataCache;
     }
-
     try {
       const response = await fetch(this.config.local.dataFile);
-      
       if (!response.ok) {
         throw new Error(APP_CONFIG.errors.dataLoadFailed);
       }
-
       const data = await response.json();
       this.dataCache = this.processCardData(data);
       return this.dataCache;
@@ -111,8 +96,8 @@ class LocalLoader {
       starterPrompt: item.starterPrompt,
       nextLevelPrompt: item.nextLevelPrompt,
       reflectionQuestion: item.reflectionQuestion,
-      frontImage: item.frontImage || this.defaultImage,
-      backImage: this.config.local.cardBackImage || this.defaultImage
+      frontImage: `${item.id}.jpg`,
+      backImage: this.config.local.cardBackImage
     }));
   }
 
