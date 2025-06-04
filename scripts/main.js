@@ -9,20 +9,10 @@ class AIBattleCards {
   // Initialize the application
   async initialize() {
     try {
-      // Check if configuration is available
-      if (!window.APP_CONFIG || !window.APP_CONFIG.app) {
-        throw new Error('Application configuration not loaded');
-      }
+      // Always use LocalLoader for GitHub Pages/static hosting
+      console.log('Running in static/GitHub Pages mode');
+      this.loader = new LocalLoader(window.APP_CONFIG);
 
-      // Create and initialize appropriate loader
-      if (window.APP_CONFIG.app.isDevMode) {
-        console.log('Running in development mode');
-        this.loader = new LocalLoader(window.APP_CONFIG);
-      } else {
-        console.log('Running in SharePoint mode');
-        this.loader = new SharePointLoader(window.APP_CONFIG);
-      }
-      
       await this.loader.initialize();
 
       // Create and initialize card manager

@@ -1,5 +1,5 @@
 // Development Mode Configuration
-const DEV_MODE = false; // Set to false for SharePoint deployment
+const DEV_MODE = true; // Always use static loader for GitHub Pages
 
 // SharePoint Configuration
 const SHAREPOINT_CONFIG = {
