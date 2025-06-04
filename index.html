@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nate's AI Battle Cards</title>
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/cards.css">
+  <link rel="stylesheet" href="styles/simple-cards.css">
 </head>
 <body>
   <div class="nates-ai-cards">
@@ -21,24 +21,11 @@
 
       <!-- Right Panel: Fixed Preview -->
       <section class="preview">
-        <div class="card-container preview-card">
-          <div class="card">
-            <div class="card-face card-front">
-              <div class="loading-overlay">
-                <div class="spinner"></div>
-              </div>
-              <img src="" alt="Preview Front">
-            </div>
-            <div class="card-face card-back">
-              <div class="loading-overlay">
-                <div class="spinner"></div>
-              </div>
-              <img src="" alt="Preview Back">
-            </div>
-          </div>
+        <div class="preview-card">
+          <img src="" alt="Preview" class="card-image">
         </div>
         <div class="card-details">
-          <h2 class="card-title"></h2>
+          <h2 class="card-title">Select a card to preview</h2>
           <p class="card-description"></p>
           <div class="card-metadata"></div>
         </div>
@@ -50,11 +37,7 @@
     </footer>
   </div>
 
-  <!-- Core Scripts -->
-  <script src="scripts/config.js"></script>
-  <script src="scripts/local-loader.js"></script>
-  <script src="scripts/sharepoint-loader.js"></script>
-  <script src="scripts/card-manager.js"></script>
-  <script src="scripts/main.js"></script>
+  <!-- Simple Script -->
+  <script src="scripts/simple-card-app.js"></script>
 </body>
 </html>
