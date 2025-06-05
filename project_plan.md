@@ -1,4 +1,22 @@
-# Nate's AI Battle Cards - GitHub Pages Deployment Project Plan
+# Project Plan: Nate's AI Battle Cards
+
+## Current Platform
+- **Platform:** GitHub Pages (static site hosting)
+- **SharePoint:** No longer supported or targeted. All SharePoint code and documentation have been removed.
+
+## Major Milestones
+- [x] Initial SharePoint prototype (deprecated)
+- [x] Migration to GitHub Pages
+- [x] Remove SharePoint-specific code and configuration
+- [x] Simplify codebase for static hosting
+
+## Current Status
+- All code is now static, simple, and designed for GitHub Pages only.
+- No SharePoint dependencies remain.
+
+## Next Steps
+- Continue UI/UX improvements
+- Add new features as needed
 
 ## Project Timeline: 1 Week (for initial deployment)
 

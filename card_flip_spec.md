@@ -1,4 +1,14 @@
-# Card Flip Animation Technical Specification
+# Card Flip Spec: Nate's AI Battle Cards
+
+## Platform
+- **Static site** on GitHub Pages
+- No SharePoint, no dynamic loading
+
+## Card Flip/Preview Logic
+- Cards show their face by default in the grid
+- When clicked, the card shows its back in the grid and its face in the preview panel
+- All logic handled by a single JavaScript file (`simple-card-app.js`)
+- No authentication or SharePoint-specific logic
 
 ## 1. Animation Overview
 

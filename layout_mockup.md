@@ -1,4 +1,17 @@
-# Layout Structure Mockup
+# Layout Mockup: Nate's AI Battle Cards
+
+## Platform
+- **Static site** hosted on GitHub Pages
+- No SharePoint integration or dynamic loading
+
+## Layout
+- Left: Scrollable grid of 16 AI battle cards (fronts shown)
+- Right: Preview panel with card details and Substack link
+- Responsive for desktop and mobile
+
+## Notes
+- All assets are loaded statically from the repository
+- No authentication or SharePoint-specific logic
 
 ## 1. Overall Layout
 

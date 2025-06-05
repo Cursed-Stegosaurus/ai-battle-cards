@@ -1,4 +1,20 @@
-# Nate's AI Battle Cards - GitHub Pages Deployment Requirements
+# Project Requirements: Nate's AI Battle Cards
+
+## Platform
+- **Target:** GitHub Pages (static site hosting)
+- **No SharePoint support**
+- **No authentication required**
+
+## Functional Requirements
+- Display a grid of 16 AI battle cards, each with unique art and title
+- Clicking a card shows its details and preview on the right
+- Card preview shows card face by default, with details and a link to Nate's Substack article
+- Responsive design for desktop and mobile
+
+## Non-Functional Requirements
+- All assets (images, data, scripts) are served statically
+- No server-side code or dynamic backend
+- No SharePoint, no authentication, no external dependencies except for Substack link
 
 ## 1. Project Overview
 - Deploy the AI Battle Cards web application to GitHub Pages

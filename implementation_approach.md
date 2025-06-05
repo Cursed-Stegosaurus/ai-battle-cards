@@ -1,3 +1,19 @@
+# Implementation Approach: Nate's AI Battle Cards
+
+## Platform
+- **Static site** using GitHub Pages
+- No SharePoint, no authentication, no dynamic loaders
+
+## Approach
+- All card data and images are loaded statically from the repository
+- Single JavaScript file (`simple-card-app.js`) manages all UI and state
+- No backend or server-side code
+
+## Benefits
+- Simple, fast, and easy to maintain
+- No external dependencies except for Substack link
+- Fully open and portable
+
 # Card System Implementation Approach
 
 ## 1. Layout Structure
