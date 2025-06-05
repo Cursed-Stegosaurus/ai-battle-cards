@@ -9,12 +9,15 @@ class SimpleCardApp {
     this.selectedCardId = null;
     this.filter = 'all'; // 'all' or 'picks'
     this.natesPicks = ['Artificer', 'Companion', 'Polymath', 'Oracle', 'Scholar'];
+    this.searchQuery = '';
+    this.searchTimeout = null;
     this.init();
   }
 
   async init() {
     try {
       await this.loadCards();
+      this.setupSearchInput();
       this.renderCards();
       this.setupEventListeners();
       this.clearPreview(); // Initialize preview with card back
@@ -39,11 +42,124 @@ class SimpleCardApp {
     }));
   }
 
+  setupSearchInput() {
+    // Remove any existing search input
+    const oldSearch = document.querySelector('.search-container .search-input');
+    if (oldSearch) oldSearch.parentNode.removeChild(oldSearch);
+    const oldIcon = document.querySelector('.search-container .search-icon');
+    if (oldIcon) oldIcon.parentNode.removeChild(oldIcon);
+    const oldClear = document.querySelector('.search-container .search-clear-btn');
+    if (oldClear) oldClear.parentNode.removeChild(oldClear);
+
+    const searchIcon = document.createElement('span');
+    searchIcon.className = 'search-icon';
+    searchIcon.innerHTML = '🔍';
+
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.className = 'search-input';
+    searchInput.placeholder = 'Search cards...';
+    searchInput.autocomplete = 'off';
+
+    const clearBtn = document.createElement('button');
+    clearBtn.type = 'button';
+    clearBtn.className = 'search-clear-btn';
+    clearBtn.innerHTML = '&times;';
+    clearBtn.title = 'Clear search';
+    clearBtn.tabIndex = 0;
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      this.searchQuery = '';
+      this.renderCards();
+      searchInput.focus();
+      if (window.innerWidth <= 700 && window.mobileStackUI) {
+        window.mobileStackUI.searchQuery = '';
+        window.mobileStackUI.updateFilteredStack();
+      }
+    });
+
+    // Add input event listener with debouncing
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = setTimeout(() => {
+        this.searchQuery = e.target.value.toLowerCase().trim();
+        this.renderCards();
+        if (window.innerWidth <= 700 && window.mobileStackUI) {
+          window.mobileStackUI.searchQuery = this.searchQuery;
+          window.mobileStackUI.updateFilteredStack();
+        }
+        // Show/hide clear button
+        clearBtn.style.display = searchInput.value ? 'block' : 'none';
+      }, 300);
+    });
+
+    // Show/hide clear button on load
+    clearBtn.style.display = searchInput.value ? 'block' : 'none';
+
+    // Insert into the correct container
+    let container;
+    if (window.innerWidth > 700) {
+      // Desktop: header
+      container = document.querySelector('.main-header .search-container');
+    } else {
+      // Mobile: mobile stack
+      container = document.querySelector('.mobile-stack-container .search-container');
+    }
+    container.appendChild(searchIcon);
+    container.appendChild(searchInput);
+    container.appendChild(clearBtn);
+
+    // Keyboard shortcut: Ctrl+F or Cmd+F focuses the search input
+    document.addEventListener('keydown', (e) => {
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      if ((isMac && e.metaKey && e.key === 'f') || (!isMac && e.ctrlKey && e.key === 'f')) {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+    });
+  }
+
+  getFilteredCards() {
+    let filteredCards = this.cards;
+    
+    // Apply filter (all/picks)
+    if (this.filter === 'picks') {
+      filteredCards = filteredCards.filter(card => this.natesPicks.includes(card.id));
+    }
+    
+    // Apply search query
+    if (this.searchQuery) {
+      filteredCards = filteredCards.filter(card => {
+        const searchableText = [
+          card.id,
+          card.model,
+          card.title,
+          card.body
+        ].join(' ').toLowerCase();
+        
+        return searchableText.includes(this.searchQuery);
+      });
+    }
+    
+    return filteredCards;
+  }
+
   renderCards() {
     const gridElement = document.querySelector('.card-grid');
     gridElement.innerHTML = '';
 
-    this.cards.forEach(card => {
+    const filteredCards = this.getFilteredCards();
+    
+    if (filteredCards.length === 0) {
+      const noResults = document.createElement('div');
+      noResults.className = 'no-results';
+      noResults.textContent = 'No cards found matching your search';
+      gridElement.appendChild(noResults);
+      return;
+    }
+
+    filteredCards.forEach(card => {
       const cardElement = this.createCardElement(card);
       gridElement.appendChild(cardElement);
     });
@@ -288,6 +404,8 @@ class MobileStackUI {
     this.cards = cards.filter(card => this.mainCardIds.includes(card.id));
     this.natesPicks = natesPicks;
     this.filter = 'all';
+    this.searchQuery = '';
+    this.searchTimeout = null;
     this.filteredStack = this.cards;
     this.currentIndex = 0;
     this.lastIndexByFilter = { all: 0, picks: 0 };
@@ -298,9 +416,70 @@ class MobileStackUI {
     this.stackEl = document.querySelector('.card-stack');
     this.detailsEl = document.querySelector('.mobile-card-details');
     this.filterBtns = document.querySelectorAll('.mobile-filter-buttons .filter-btn');
+    this.setupSearchInput();
     this.attachFilterEvents();
     this.render();
     this.attachSwipeEvents();
+  }
+
+  setupSearchInput() {
+    // Remove any existing search input
+    const oldSearch = document.querySelector('.search-container .search-input');
+    if (oldSearch) oldSearch.parentNode.removeChild(oldSearch);
+    const oldIcon = document.querySelector('.search-container .search-icon');
+    if (oldIcon) oldIcon.parentNode.removeChild(oldIcon);
+
+    const searchIcon = document.createElement('span');
+    searchIcon.className = 'search-icon';
+    searchIcon.innerHTML = '🔍';
+
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.className = 'search-input';
+    searchInput.placeholder = 'Search cards...';
+
+    // Add input event listener with debouncing
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = setTimeout(() => {
+        this.searchQuery = e.target.value.toLowerCase().trim();
+        this.updateFilteredStack();
+      }, 300);
+    });
+
+    // Insert into the correct container
+    if (window.innerWidth > 700) {
+      // Desktop: header
+      const headerSearch = document.querySelector('.main-header .search-container');
+      headerSearch.appendChild(searchIcon);
+      headerSearch.appendChild(searchInput);
+    } else {
+      // Mobile: mobile stack
+      const mobileSearch = document.querySelector('.mobile-stack-container .search-container');
+      mobileSearch.appendChild(searchIcon);
+      mobileSearch.appendChild(searchInput);
+    }
+  }
+
+  updateFilteredStack() {
+    let filtered = this.filter === 'all' ? this.cards : this.cards.filter(card => this.natesPicks.includes(card.id));
+    
+    if (this.searchQuery) {
+      filtered = filtered.filter(card => {
+        const searchableText = [
+          card.id,
+          card.model,
+          card.title,
+          card.body
+        ].join(' ').toLowerCase();
+        
+        return searchableText.includes(this.searchQuery);
+      });
+    }
+    
+    this.filteredStack = filtered;
+    this.currentIndex = 0;
+    this.render();
   }
 
   attachFilterEvents() {
@@ -318,14 +497,7 @@ class MobileStackUI {
     if (this.filter === filter) return;
     this.lastIndexByFilter[this.filter] = this.currentIndex;
     this.filter = filter;
-    this.filteredStack = filter === 'all'
-      ? this.cards
-      : this.cards.filter(card => this.natesPicks.includes(card.id));
-    // Restore last position if possible, else 0
-    let idx = this.lastIndexByFilter[filter] || 0;
-    if (idx >= this.filteredStack.length) idx = 0;
-    this.currentIndex = idx;
-    this.render();
+    this.updateFilteredStack();
   }
 
   attachSwipeEvents() {
