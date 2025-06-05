@@ -88,30 +88,40 @@
   animation: cardFlipAnim 0.5s linear;
 }
 
-/* Filter Buttons */
+/* Filter Buttons (Modern Look) */
 .filter-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+  margin-top: 0.5rem;
 }
 .filter-btn {
   background: var(--card-background);
   color: var(--highlight);
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
+  border-radius: 999px;
+  padding: 0.6rem 2rem;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  letter-spacing: 0.01em;
+  outline: none;
+  position: relative;
 }
 .filter-btn.active, .filter-btn:focus {
   background: var(--highlight);
   color: var(--card-background);
-  outline: none;
+  box-shadow: 0 4px 16px 0 rgba(245, 233, 197, 0.18);
+  transform: translateY(-2px) scale(1.04);
+  z-index: 1;
+}
+.filter-btn:hover:not(.active) {
+  background: #174d47;
+  color: var(--highlight);
+  transform: translateY(-1px) scale(1.02);
 }
 
 /* Card Fade Animations */
