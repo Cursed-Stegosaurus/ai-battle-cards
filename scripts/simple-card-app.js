@@ -203,6 +203,12 @@ class SimpleCardApp {
       ? this.cards.map(card => card.id)
       : this.natesPicks;
 
+    // FLIP: Record first positions
+    const firstRects = new Map();
+    cardElements.forEach(cardEl => {
+      firstRects.set(cardEl.dataset.id, cardEl.getBoundingClientRect());
+    });
+
     // Fade out cards not in showIds
     cardElements.forEach(cardEl => {
       const cardId = cardEl.dataset.id;
@@ -212,6 +218,7 @@ class SimpleCardApp {
       } else {
         cardEl.classList.remove('fade-out');
         cardEl.classList.add('fade-in');
+        cardEl.style.display = '';
       }
     });
 
@@ -221,9 +228,30 @@ class SimpleCardApp {
         const cardId = cardEl.dataset.id;
         if (!showIds.includes(cardId)) {
           cardEl.style.display = 'none';
-        } else {
-          cardEl.style.display = '';
         }
+      });
+
+      // FLIP: Record last positions and animate
+      const lastRects = new Map();
+      cardElements.forEach(cardEl => {
+        lastRects.set(cardEl.dataset.id, cardEl.getBoundingClientRect());
+      });
+      cardElements.forEach(cardEl => {
+        const cardId = cardEl.dataset.id;
+        if (!showIds.includes(cardId)) return;
+        const first = firstRects.get(cardId);
+        const last = lastRects.get(cardId);
+        if (!first || !last) return;
+        const dx = first.left - last.left;
+        const dy = first.top - last.top;
+        cardEl.classList.add('flip-animating');
+        cardEl.style.transform = `translate(${dx}px, ${dy}px)`;
+        // Force reflow
+        cardEl.getBoundingClientRect();
+        cardEl.style.transform = '';
+        setTimeout(() => {
+          cardEl.classList.remove('flip-animating');
+        }, 400);
       });
     }, 400);
   }
