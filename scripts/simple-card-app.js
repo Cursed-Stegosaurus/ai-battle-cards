@@ -94,13 +94,18 @@ class SimpleCardApp {
     const img = cardElement.querySelector('.card-image');
     const card = this.cards.find(c => c.id === cardId);
 
-    if (isSelected) {
-      cardElement.classList.add('selected');
-      img.src = card.backImage; // Show back when selected
-    } else {
-      cardElement.classList.remove('selected');
-      img.src = card.frontImage; // Show front when deselected
-    }
+    // Add flipping class to trigger animation
+    cardElement.classList.add('flipping');
+
+    // At halfway point, swap the image
+    setTimeout(() => {
+      img.src = isSelected ? card.backImage : card.frontImage;
+    }, 250); // Half of 0.5s animation
+
+    // Remove flipping class after animation
+    setTimeout(() => {
+      cardElement.classList.remove('flipping');
+    }, 500);
   }
 
   updatePreview(cardId) {
