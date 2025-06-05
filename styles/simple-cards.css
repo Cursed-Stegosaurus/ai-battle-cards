@@ -188,42 +188,41 @@
     border: 1px solid #D4AF37;
   }
   .card-stack {
-    width: 96vw;
-    max-width: 370px;
-    min-height: 240px;
+    width: 90vw;
+    max-width: 340px;
+    min-height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.2rem auto;
     position: relative;
-    height: 370px;
+    height: 340px;
     touch-action: pan-y;
   }
   .stack-card {
-    width: 94vw;
-    max-width: 350px;
-    height: 98%;
-    border-radius: 16px;
+    width: 100%;
+    max-width: 340px;
+    height: 100%;
+    border-radius: 10px;
     box-shadow: 0 6px 18px var(--shadow-color);
     background: var(--card-background);
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s, box-shadow 0.2s;
     z-index: 2;
     will-change: transform, opacity;
-    overflow: visible;
+    overflow: hidden;
   }
   .stack-card img {
-    width: 97%;
-    height: 97%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     background: transparent;
-    border-radius: 14px;
+    border-radius: 10px;
     pointer-events: none;
     user-select: none;
     z-index: 3;
