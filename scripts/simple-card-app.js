@@ -156,6 +156,8 @@ class SimpleCardApp {
       noResults.className = 'no-results';
       noResults.textContent = 'No cards found matching your search';
       gridElement.appendChild(noResults);
+      // Re-attach event listeners (no cards, but for consistency)
+      this.setupEventListeners();
       return;
     }
 
@@ -163,6 +165,9 @@ class SimpleCardApp {
       const cardElement = this.createCardElement(card);
       gridElement.appendChild(cardElement);
     });
+
+    // Re-attach event listeners after rendering
+    this.setupEventListeners();
   }
 
   createCardElement(card) {
@@ -182,8 +187,10 @@ class SimpleCardApp {
 
   setupEventListeners() {
     const gridElement = document.querySelector('.card-grid');
-    
-    gridElement.addEventListener('click', (event) => {
+    // Remove any previous click event to prevent duplicates
+    gridElement.replaceWith(gridElement.cloneNode(true));
+    const newGridElement = document.querySelector('.card-grid');
+    newGridElement.addEventListener('click', (event) => {
       const cardElement = event.target.closest('.simple-card');
       if (cardElement) {
         this.selectCard(cardElement.dataset.id);
