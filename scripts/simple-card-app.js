@@ -2,6 +2,8 @@ class SimpleCardApp {
   constructor() {
     this.cards = [];
     this.selectedCardId = null;
+    this.filter = 'all'; // 'all' or 'picks'
+    this.natesPicks = ['Artificer', 'Companion', 'Polymath', 'Oracle', 'Scholar'];
     this.init();
   }
 
@@ -11,6 +13,7 @@ class SimpleCardApp {
       this.renderCards();
       this.setupEventListeners();
       this.clearPreview(); // Initialize preview with card back
+      this.setupFilterButtons();
     } catch (error) {
       console.error('Failed to initialize app:', error);
       this.showError('Failed to load cards. Please refresh the page.');
@@ -144,12 +147,21 @@ class SimpleCardApp {
   }
 
   clearPreview() {
-    const previewImg = document.querySelector('.preview-card .card-image');
+    const previewCard = document.querySelector('.preview-card');
+    const previewImg = previewCard.querySelector('.card-image');
     const titleElement = document.querySelector('.card-title');
     const descElement = document.querySelector('.card-description');
     const metadataElement = document.querySelector('.card-metadata');
 
-    if (previewImg) previewImg.src = 'Cards/card back.jpg'; // Show card back by default
+    // Animate the preview card flip to card back
+    previewCard.classList.add('flipping');
+    setTimeout(() => {
+      previewImg.src = 'Cards/card back.jpg';
+    }, 250);
+    setTimeout(() => {
+      previewCard.classList.remove('flipping');
+    }, 500);
+
     if (titleElement) titleElement.textContent = 'Select a card to preview';
     if (descElement) descElement.textContent = '';
     if (metadataElement) metadataElement.innerHTML = '';
@@ -164,6 +176,56 @@ class SimpleCardApp {
     setTimeout(() => {
       errorElement.remove();
     }, 5000);
+  }
+
+  setupFilterButtons() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        this.setFilter(filter);
+      });
+    });
+  }
+
+  setFilter(filter) {
+    if (this.filter === filter) return;
+    this.filter = filter;
+    this.animateFilterChange();
+  }
+
+  animateFilterChange() {
+    const gridElement = document.querySelector('.card-grid');
+    const cardElements = Array.from(gridElement.querySelectorAll('.simple-card'));
+    const showIds = this.filter === 'all'
+      ? this.cards.map(card => card.id)
+      : this.natesPicks;
+
+    // Fade out cards not in showIds
+    cardElements.forEach(cardEl => {
+      const cardId = cardEl.dataset.id;
+      if (!showIds.includes(cardId)) {
+        cardEl.classList.add('fade-out');
+        cardEl.classList.remove('fade-in');
+      } else {
+        cardEl.classList.remove('fade-out');
+        cardEl.classList.add('fade-in');
+      }
+    });
+
+    // After fade out, hide the cards
+    setTimeout(() => {
+      cardElements.forEach(cardEl => {
+        const cardId = cardEl.dataset.id;
+        if (!showIds.includes(cardId)) {
+          cardEl.style.display = 'none';
+        } else {
+          cardEl.style.display = '';
+        }
+      });
+    }, 400);
   }
 }
 
