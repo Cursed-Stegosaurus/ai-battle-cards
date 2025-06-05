@@ -1,5 +1,10 @@
 class SimpleCardApp {
   constructor() {
+    this.mainCardIds = [
+      'Artificer', 'Companion', 'Strategist', 'Prodigy', 'Polymath', 'Composer',
+      'Oracle', 'Scholar', 'Prospector', 'Collective', 'Voyager', 'Diplomat',
+      'Commons', 'Navigator', 'Maverick', 'Scout'
+    ];
     this.cards = [];
     this.selectedCardId = null;
     this.filter = 'all'; // 'all' or 'picks'
@@ -23,16 +28,15 @@ class SimpleCardApp {
   async loadCards() {
     const response = await fetch('cards.json');
     const data = await response.json();
-    
-    // Simple mapping - use the data as-is with minimal processing
-    this.cards = data.map(card => ({
+    // Only include main cards
+    this.cards = data.filter(card => this.mainCardIds.includes(card.id)).map(card => ({
       id: card.id,
       title: card.title,
-      frontImage: card.front, // "Cards/Artificer.jpg"
-      backImage: "Cards/card back.jpg", // Generic back for all cards
-      description: card.what,
-      usage: card.why,
-      when: Array.isArray(card.when) ? card.when.join(', ') : card.when,
+      frontImage: card.front,
+      backImage: "Cards/card back.jpg",
+      what: card.what,
+      why: card.why,
+      when: card.when,
       watch: card.watch
     }));
   }
@@ -136,14 +140,13 @@ class SimpleCardApp {
     const metadataElement = document.querySelector('.card-metadata');
 
     if (titleElement) titleElement.textContent = card.title;
-    if (descElement) descElement.textContent = card.description;
-    if (metadataElement) {
-      metadataElement.innerHTML = `
-        <p><strong>Why:</strong> ${card.usage}</p>
-        <p><strong>When:</strong> ${card.when}</p>
-        <p><strong>Watch:</strong> ${card.watch}</p>
-      `;
-    }
+    let detailsHtml = '';
+    if (card.what) detailsHtml += `<div style='margin-bottom:0.7rem;'>${card.what}</div>`;
+    if (card.why) detailsHtml += `<p><strong>Why:</strong> ${card.why}</p>`;
+    if (card.when) detailsHtml += `<p><strong>When:</strong> ${Array.isArray(card.when) ? card.when.join(' ') : card.when}</p>`;
+    if (card.watch) detailsHtml += `<p><strong>Watch:</strong> ${card.watch}</p>`;
+    if (descElement) descElement.innerHTML = '';
+    if (metadataElement) metadataElement.innerHTML = detailsHtml;
   }
 
   clearPreview() {
@@ -284,10 +287,15 @@ class SimpleCardApp {
 // --- MOBILE STACK/SWIPE UI ---
 class MobileStackUI {
   constructor(cards, natesPicks) {
-    this.cards = cards;
+    this.mainCardIds = [
+      'Artificer', 'Companion', 'Strategist', 'Prodigy', 'Polymath', 'Composer',
+      'Oracle', 'Scholar', 'Prospector', 'Collective', 'Voyager', 'Diplomat',
+      'Commons', 'Navigator', 'Maverick', 'Scout'
+    ];
+    this.cards = cards.filter(card => this.mainCardIds.includes(card.id));
     this.natesPicks = natesPicks;
     this.filter = 'all';
-    this.filteredStack = cards;
+    this.filteredStack = this.cards;
     this.currentIndex = 0;
     this.lastIndexByFilter = { all: 0, picks: 0 };
     this.setup();
@@ -411,15 +419,13 @@ class MobileStackUI {
       return;
     }
     const card = this.filteredStack[this.currentIndex];
-    this.detailsEl.innerHTML = `
-      <h2 style="margin:0 0 0.7rem 0; color:var(--highlight); font-size:1.2rem;">${card.title}</h2>
-      <div style="margin-bottom:0.7rem;">${card.description}</div>
-      <div style="font-size:0.98em;">
-        <p><strong>Why:</strong> ${card.usage}</p>
-        <p><strong>When:</strong> ${card.when}</p>
-        <p><strong>Watch:</strong> ${card.watch}</p>
-      </div>
-    `;
+    let detailsHtml = '';
+    if (card.title) detailsHtml += `<h2 style="margin:0 0 0.7rem 0; color:var(--highlight); font-size:1.2rem;">${card.title}</h2>`;
+    if (card.what) detailsHtml += `<div style='margin-bottom:0.7rem;'>${card.what}</div>`;
+    if (card.why) detailsHtml += `<p><strong>Why:</strong> ${card.why}</p>`;
+    if (card.when) detailsHtml += `<p><strong>When:</strong> ${Array.isArray(card.when) ? card.when.join(' ') : card.when}</p>`;
+    if (card.watch) detailsHtml += `<p><strong>Watch:</strong> ${card.watch}</p>`;
+    this.detailsEl.innerHTML = detailsHtml;
   }
 
   createCardElement(card) {
