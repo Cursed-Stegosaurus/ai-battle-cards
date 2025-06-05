@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Artificer",
+    "model": "ChatGPT-o3",
+    "body": "What it is: OpenAI\u2019s \u201co3\u201d is the most reasoning-dense model available to the public. Think of it as a CNC mill for ideas: feed it a fuzzy problem, and it iteratively carves out logic, equations, or code until the edges are sharp.\nWhy it made the deck: You rely on it as a daily driver for hard things\u2014actuarial tables, SQL migrations, multi-stage prompt chains. Nothing else packs this much reliability into a single call.\nWhen to play it: \n\u2022 Designing data schemas\u2002\n\u2022 Debugging opaque stack traces\u2002\n\u2022 Writing memos where wrong math is reputationally fatal.\nWatch-outs: Slower and pricier than mid-range models; best used when the extra IQ will be noticed."
+  },
+  {
+    "id": "Companion",
+    "model": "ChatGPT-4o",
+    "body": "What it is: The \u201co\u201d stands for omni: text, voice, and vision in one lightweight wrapper. It trades raw depth for latency and warmth.\nWhy included: It\u2019s the friend who answers on the first ring\u2014perfect for rapid notes, screen-share brainstorming, or photo-based quick fixes.\nSweet spots: \n\u2022 Annotating screenshots\u2002\n\u2022 Explaining a diagram by voice\u2002\n\u2022 Tossing together a polite reply before you board a plane.\nLimitations: Doesn\u2019t sweat edge cases; for rigorous analysis hand the baton back to Artificer or Strategist."
+  },
+  {
+    "id": "Strategist",
+    "model": "GPT-4.1",
+    "body": "What it is: The flagship successor to GPT-4 Turbo. Same calm prose, sharper long-range sense-making.\nWhy included: You keep reaching for it when the shape of a solution matters more than the pixels\u2014product road-maps, proposal trade-offs, scenario planning.\nPlays well with:\n\u2022 Causal diagrams\u2002\n\u2022 OKR roll-downs\u2002\n\u2022 Competitive-landscape memos.\nCaveats: Costlier tokens than 4o; context still capped at 256 k, so ultra-long docs belong to Oracle."
+  },
+  {
+    "id": "Prodigy",
+    "model": "GPT-4.5 preview",
+    "body": "What it is: An early peek at OpenAI\u2019s 4.5\u2014smart, capable, expensive and getting retired soon! Not for long though\u2014expect this to be the backbone of the rumored GPT-5.\nWhy included: Take a peek at the future before ChatGPT-5!\nUse cases: \n\u2022 Creative writing\u2002\n\u2022 EQ conversations\u2002\n\u2022 Writing critique.\nGotchas: Preview means it won\u2019t always be here, so enjoy it while it lasts."
+  },
+  {
+    "id": "Polymath",
+    "model": "Claude-4 Opus",
+    "body": "What it is: Anthropic\u2019s largest model, famous for graceful prose and strong coding ability, especially complex coding problem-solving.\nWhy included: It threads the needle between technical rigor and executive polish\u2014and plugs straight into Gmail/Calendar in the Claude app.\nShines at:\n\u2022 Complex refactors written like a consultant\u2019s playbook\u2002\n\u2022 Policy drafts that actually sound human.\nLimits: Slightly narrower tool-calling APIs than OpenAI; can stall in long chats."
+  },
+  {
+    "id": "Composer",
+    "model": "Claude 3.5 Sonnet",
+    "body": "What it is: Anthropic\u2019s \u201cmiddle-weight\u201d model: smaller than Opus, faster than anything its size, and trained to keep a lyrical, on-brand voice. Brilliant at composing code.\nWhy included: It\u2019s the go-to when you need speed plus style\u2014edit copy live on a call, polish slides minutes before the meeting, or refactor 200 lines of code while stakeholders watch.\nSweet spots: \n\u2022 Real-time writing coach\u2003\n\u2022 Tone-matching executive summaries\u2003\n\u2022 Rapid code patches with clean explanations.\nWatch-outs: Hard problems still belong to Opus or Artificer; token context tops out sooner than you want."
+  },
+  {
+    "id": "Oracle",
+    "model": "Gemini 2.5 Pro / Ultra",
+    "body": "What it is: Google\u2019s flagship with million-token context and a strong fact-checking layer.\nWhy included: When the brief is \u201cread this mountain of stuff and tell me what\u2019s true,\u201d Oracle is the only model that can swallow the whole mountain in one bite.\nShines at: \n\u2022 Cross-checking stats\u2003\n\u2022 Summarising litigation troves\u2003\n\u2022 Ingesting entire wikis for \u201cone-pager\u201d outputs.\nLimits: Thinks more than 4o, occasionally overly cautious, has a little bit of fuzziness following some instructions\u2014have Strategist tighten conclusions."
+  },
+  {
+    "id": "Scholar",
+    "model": "ChatGPT Deep Research",
+    "body": "What it is: A special OpenAI variant tuned for long, self-directed research runs (10\u201320 minutes).\nWhy included: It\u2019s your personal grad-student: disappear, scour the web & PDFs, return with citations and a mini-literature review.\nSweet spots: \n\u2022 Competitive landscapes\u2003\n\u2022 Historical chronologies\u2003\n\u2022 \u201cExplain this like I\u2019m new, with sources.\u201d\nWatch-outs: Not interactive in real time\u2014hand the baton back to Companion for quick Q&A."
+  },
+  {
+    "id": "Prospector",
+    "model": "DeepSeek R1",
+    "body": "What it is: A Chinese-led open model that just cracked the top-10 in code benchmarks\u2014at a fraction of Big-Tech inference cost.\nWhy included: Perfect for high-volume generation when you can\u2019t afford GPT pricing or need strong Mandarin ability.\nUse cases: \n\u2022 Bulk code stubs\u2003\n\u2022 STEM problem sets\u2003\n\u2022 Bilingual chatbot demos.\nCaveats: Slightly lower on scores than o3. More importantly, the Terms of Service aren\u2019t friendly to most US or EU business use-cases."
+  },
+  {
+    "id": "Collective",
+    "model": "Mixtral 8 \u00d7 22B",
+    "body": "What it is: An open Mixture-of-Experts (MoE): eight specialist subnetworks \u201cvote\u201d on every token.\nWhy included: It delivers near-Claude quality while staying fully open-weight\u2014ideal for privacy-sensitive or air-gapped deployments.\nShines at: \n\u2022 Self-hosted knowledge bots\u2003\n\u2022 On-prem RAG stacks\u2003\n\u2022 Fast fine-tunes with low GPU budgets.\nLimits: MoE routing sometimes misfires on niche queries; heavier model-loading logistics than plain Llama."
+  },
+  {
+    "id": "Voyager",
+    "model": "Yi-1.5 200B",
+    "body": "What it is: 01.AI\u2019s large bilingual model, fluent in English and Chinese and permissively licensed.\nWhy include: The best bridge when you need to serve both EN and ZH users without juggling two vendors.\nSweet spots: \n\u2022 Cross-border product copy\u2003\n\u2022 Dual-language knowledge bases\u2003\n\u2022 Fine-tunes for APAC markets.\nWatch-outs: High GPU memory footprint; English style slightly stiffer than Opus\u2014polish with Composer if tone matters."
+  },
+  {
+    "id": "Diplomat",
+    "model": "Cohere Command R+",
+    "body": "What it is: Cohere\u2019s enterprise-tuned model, optimised for Retrieval-Augmented Generation (RAG) and multi-step tool use.\nWhy included: It plugs straight into long corporate docs, and is set up to play nicely with corporate workflows from the start.\nPlays well with: \n\u2022 Internal knowledge bots\u2003\n\u2022 Compliance summaries\u2003\n\u2022 Multi-step workflows.\nLimits: Designed for workflows more than writing; for marketing copy pair with Companion or Composer."
+  },
+  {
+    "id": "Commons",
+    "model": "Llama 3 405B",
+    "body": "What it is: Meta\u2019s largest open model\u2014basically \u201cChatGPT-3.5 quality, but yours to tinker with.\u201d\nWhy included: It\u2019s the default choice for universities, startups, and hobbyists who want strong performance and full control.\nUse cases: \n\u2022 Private-cloud assistants\u2003\n\u2022 Domain-specific fine-tunes\u2003\n\u2022 Academic experiments.\nCaveats: No built-in tools API; connect external RAG or function-calling layers yourself."
+  },
+  {
+    "id": "Navigator",
+    "model": "Mistral Large",
+    "body": "What it is: A large model cousin to Mixtral; designed for intelligence inference and coding abilities.\nWhy included: An EU-friendly model with strong multi-lingual capabilities.\nShines at: Instruction following abilities, strong at coding and inference.\nLimits: Not a true top 3 model; for heavy analysis use Artificer or Strategist."
+  },
+  {
+    "id": "Maverick",
+    "model": "Grok-2",
+    "body": "What it is: xAI\u2019s second generation, personality-forward model with a cheeky tone and access to real-time information.\nWhy included: Great for free-wheeling ideation and keeping up to date on X (where it gets tagged all the time).\nSweet spots:\n\u2022 Brainstorm sessions\u2003\n\u2022 Solid coding abilities \n\u2022 Good creative problem-solving sense\nWatch-outs: Can veer informal; run final drafts through Composer for polish. No published model card and a number of prominent model alignment issues."
+  },
+  {
+    "id": "Scout",
+    "model": "Perplexity Sonar",
+    "body": "What it is: A retrieval-native model that always cites sources\u2014think \u201cAI search-engine in a box.\u201d\nWhy included: Fastest path to a sourced bullet list when you don\u2019t have time to double-check links yourself.\nUse cases: \n\u2022 Quick news briefs\u2003\n\u2022 \u201cShow me five recent papers on\u2026\u201d\u2003\n\u2022 Pre-meeting fact scouting.\nCaveats: Depends on live web access, purpose-built for search."
+  }
+]
