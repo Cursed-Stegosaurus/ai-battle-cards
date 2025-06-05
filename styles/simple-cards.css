@@ -78,4 +78,9 @@
   49%  { transform: rotateY(90deg); }
   51%  { transform: rotateY(90deg); }
   100% { transform: rotateY(0deg); }
+}
+
+/* Preview Card Flip Animation */
+.preview-card.flipping .card-image {
+  animation: cardFlipAnim 0.5s linear;
 } 

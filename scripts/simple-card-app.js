@@ -112,11 +112,20 @@ class SimpleCardApp {
     const card = this.cards.find(c => c.id === cardId);
     if (!card) return;
 
-    // Update preview image
-    const previewImg = document.querySelector('.preview-card .card-image');
-    if (previewImg) {
+    // Animate the preview card flip
+    const previewCard = document.querySelector('.preview-card');
+    const previewImg = previewCard.querySelector('.card-image');
+    previewCard.classList.add('flipping');
+
+    // At halfway point, swap the image
+    setTimeout(() => {
       previewImg.src = card.frontImage; // Always show front in preview
-    }
+    }, 250);
+
+    // Remove flipping class after animation
+    setTimeout(() => {
+      previewCard.classList.remove('flipping');
+    }, 500);
 
     // Update card details
     const titleElement = document.querySelector('.card-title');

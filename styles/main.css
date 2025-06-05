@@ -39,6 +39,10 @@ body {
 .main-header {
   text-align: center;
   padding: 2rem 1rem 0;
+  position: sticky;
+  top: 0;
+  background: var(--background);
+  z-index: 100;
 }
 
 .main-header h1 {
@@ -113,8 +117,7 @@ body {
 
 /* Footer */
 .main-footer {
-  text-align: right;
-  padding: 2rem 2rem 2rem 0;
+  display: none;
 }
 
 .substack-link {
