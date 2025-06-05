@@ -190,37 +190,32 @@
   .card-stack {
     width: 90vw;
     max-width: 340px;
-    min-height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.2rem auto;
-    position: relative;
     height: 340px;
-    touch-action: pan-y;
+    padding: 0;
+    margin: 0 auto 1.2rem auto;
+    background: transparent;
   }
   .stack-card {
     width: 100%;
-    max-width: 340px;
     height: 100%;
+    max-width: 340px;
+    max-height: 340px;
     border-radius: 10px;
-    box-shadow: 0 6px 18px var(--shadow-color);
     background: var(--card-background);
+    box-shadow: 0 6px 18px var(--shadow-color);
     position: absolute;
     left: 0;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s, box-shadow 0.2s;
-    z-index: 2;
-    will-change: transform, opacity;
     overflow: hidden;
+    z-index: 2;
   }
   .stack-card img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     background: transparent;
     border-radius: 10px;
     pointer-events: none;
@@ -228,6 +223,9 @@
     z-index: 3;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
     position: relative;
+    margin: 0;
+    padding: 0;
+    display: block;
   }
   .stack-card.slide-left {
     transform: translateX(-150vw) rotate(-18deg);
