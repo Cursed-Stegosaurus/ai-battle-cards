@@ -26,18 +26,16 @@ class SimpleCardApp {
   }
 
   async loadCards() {
-    const response = await fetch('cards.json');
+    const response = await fetch('new_cards.json');
     const data = await response.json();
     // Only include main cards
     this.cards = data.filter(card => this.mainCardIds.includes(card.id)).map(card => ({
       id: card.id,
-      title: card.title,
-      frontImage: card.front,
+      model: card.model,
+      title: `${card.id} - ${card.model}`,
+      frontImage: `Cards/${card.id}.jpg`,
       backImage: "Cards/card back.jpg",
-      what: card.what,
-      why: card.why,
-      when: card.when,
-      watch: card.watch
+      body: card.body
     }));
   }
 
@@ -140,13 +138,8 @@ class SimpleCardApp {
     const metadataElement = document.querySelector('.card-metadata');
 
     if (titleElement) titleElement.textContent = card.title;
-    let detailsHtml = '';
-    if (card.what) detailsHtml += `<div style='margin-bottom:0.7rem;'>${card.what}</div>`;
-    if (card.why) detailsHtml += `<p><strong>Why:</strong> ${card.why}</p>`;
-    if (card.when) detailsHtml += `<p><strong>When:</strong> ${Array.isArray(card.when) ? card.when.join(' ') : card.when}</p>`;
-    if (card.watch) detailsHtml += `<p><strong>Watch:</strong> ${card.watch}</p>`;
     if (descElement) descElement.innerHTML = '';
-    if (metadataElement) metadataElement.innerHTML = detailsHtml;
+    if (metadataElement) metadataElement.innerHTML = card.body ? `<div style='white-space:pre-line;'>${card.body}</div>` : '';
   }
 
   clearPreview() {
@@ -421,10 +414,7 @@ class MobileStackUI {
     const card = this.filteredStack[this.currentIndex];
     let detailsHtml = '';
     if (card.title) detailsHtml += `<h2 style="margin:0 0 0.7rem 0; color:var(--highlight); font-size:1.2rem;">${card.title}</h2>`;
-    if (card.what) detailsHtml += `<div style='margin-bottom:0.7rem;'>${card.what}</div>`;
-    if (card.why) detailsHtml += `<p><strong>Why:</strong> ${card.why}</p>`;
-    if (card.when) detailsHtml += `<p><strong>When:</strong> ${Array.isArray(card.when) ? card.when.join(' ') : card.when}</p>`;
-    if (card.watch) detailsHtml += `<p><strong>Watch:</strong> ${card.watch}</p>`;
+    if (card.body) detailsHtml += `<div style='white-space:pre-line;'>${card.body}</div>`;
     this.detailsEl.innerHTML = detailsHtml;
   }
 
