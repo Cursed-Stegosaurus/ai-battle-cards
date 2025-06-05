@@ -187,13 +187,21 @@
     box-shadow: 0 0 4px #D4AF37;
     border: 1px solid #D4AF37;
   }
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
   .card-stack {
     width: 90vw;
     max-width: 340px;
     height: 340px;
-    padding: 0;
-    margin: 0 auto 1.2rem auto;
+    margin: 1.2rem auto 1.2rem auto;
     background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
   .stack-card {
     width: 100%;
@@ -203,9 +211,6 @@
     border-radius: 10px;
     background: var(--card-background);
     box-shadow: 0 6px 18px var(--shadow-color);
-    position: absolute;
-    left: 0;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -222,7 +227,6 @@
     user-select: none;
     z-index: 3;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
-    position: relative;
     margin: 0;
     padding: 0;
     display: block;
@@ -267,11 +271,6 @@
     color: #D4AF37;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  }
-  .main-header {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
   }
 }
 
