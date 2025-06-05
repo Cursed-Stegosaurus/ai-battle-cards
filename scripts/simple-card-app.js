@@ -215,10 +215,6 @@ class SimpleCardApp {
       if (!showIds.includes(cardId)) {
         cardEl.classList.add('fade-out');
         cardEl.classList.remove('fade-in');
-      } else {
-        cardEl.classList.remove('fade-out');
-        cardEl.classList.add('fade-in');
-        cardEl.style.display = '';
       }
     });
 
@@ -231,11 +227,26 @@ class SimpleCardApp {
         }
       });
 
+      // Show cards coming back and set initial hidden state
+      cardElements.forEach(cardEl => {
+        const cardId = cardEl.dataset.id;
+        if (showIds.includes(cardId)) {
+          if (cardEl.style.display === 'none') {
+            cardEl.style.display = '';
+            cardEl.classList.remove('fade-in', 'fade-out', 'flip-animating');
+            cardEl.style.opacity = '0';
+            cardEl.style.transform = 'scale(0.8)';
+          }
+        }
+      });
+
       // FLIP: Record last positions and animate
       const lastRects = new Map();
       cardElements.forEach(cardEl => {
         lastRects.set(cardEl.dataset.id, cardEl.getBoundingClientRect());
       });
+
+      // Animate cards to new positions
       cardElements.forEach(cardEl => {
         const cardId = cardEl.dataset.id;
         if (!showIds.includes(cardId)) return;
@@ -252,6 +263,19 @@ class SimpleCardApp {
         setTimeout(() => {
           cardEl.classList.remove('flip-animating');
         }, 400);
+      });
+
+      // Fade in cards coming back
+      requestAnimationFrame(() => {
+        cardElements.forEach(cardEl => {
+          const cardId = cardEl.dataset.id;
+          if (showIds.includes(cardId)) {
+            cardEl.classList.add('fade-in');
+            cardEl.classList.remove('fade-out');
+            cardEl.style.opacity = '';
+            cardEl.style.transform = '';
+          }
+        });
       });
     }, 400);
   }
