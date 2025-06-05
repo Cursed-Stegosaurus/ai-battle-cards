@@ -1,210 +1,263 @@
 [
   {
     "id": "Artificer",
-    "title": "Artificer - ChatGPT o3",
+    "title": "Artificer\u2002-\u2002ChatGPT-o3",
     "front": "Cards/Artificer.jpg",
-    "what": "OpenAI’s o3 is the most reasoning-dense public model.",
-    "why": "Daily driver for tasks where absolute correctness matters.",
+    "what": "What it is.\u00a0OpenAI\u2019s \u201co3\u201d is the most reasoning-dense model available to the public. Think of it as a CNC mill for ideas: feed it a fuzzy problem, and it iteratively carves out logic, equations, or code until the edges are sharp."
+  },
+  {
+    "id": "Why it made the deck.\u00a0You rely on it as a\u00a0daily driver for hard things",
+    "title": "Why it made the deck.\u00a0You rely on it as a\u00a0daily driver for hard things-actuarial tables, SQL migrations, multi-stage prompt chains. Nothing else packs this much reliability into a single call.",
+    "front": "Cards/Why it made the deck.\u00a0You rely on it as a\u00a0daily driver for hard things.jpg",
+    "why": "When to play it.\u00a0\u2022 Designing data schemas\u2002\u2022 Debugging opaque stack traces\u2002\u2022 Writing memos where wrong math is reputationally fatal.",
     "when": [
-      "Designing data schemas",
-      "Debugging opaque stack traces",
+      "Designing data schemas\u2002",
+      "Debugging opaque stack traces\u2002",
       "Writing memos where wrong math is reputationally fatal"
     ],
-    "watch": "Slower and pricier than mid-range models."
+    "watch": "Watch-outs.\u00a0Slower and pricier than mid-range models; best used when the extra IQ will be\u00a0noticed."
   },
   {
     "id": "Companion",
-    "title": "Companion - ChatGPT 4o",
+    "title": "Companion\u2002-\u2002ChatGPT-4o",
     "front": "Cards/Companion.jpg",
-    "what": "Omni model for text, voice and vision with low latency.",
-    "why": "Instant helper for notes, brainstorming and photo quick-fixes.",
+    "what": "What it is.\u00a0The \u201co\u201d stands for omni: text, voice, and vision in one lightweight wrapper. It trades raw depth for latency and warmth."
+  },
+  {
+    "id": "Why included.\u00a0It\u2019s the friend who answers on the first ring",
+    "title": "Why included.\u00a0It\u2019s the friend who answers on the first ring-perfect for rapid notes, screen-share brainstorming, or photo-based quick fixes.",
+    "front": "Cards/Why included.\u00a0It\u2019s the friend who answers on the first ring.jpg",
+    "why": "Sweet spots.\u00a0\u2022 Annotating screenshots\u2002\u2022 Explaining a diagram by voice\u2002\u2022 Tossing together a polite reply before you board a plane.",
     "when": [
-      "Annotating screenshots",
-      "Explaining a diagram by voice",
-      "Writing a polite reply before boarding a plane"
+      "Annotating screenshots\u2002",
+      "Explaining a diagram by voice\u2002",
+      "Tossing together a polite reply before you board a plane"
     ],
-    "watch": "Skips edge-case rigor; hand tough work to Artificer or Strategist."
+    "watch": "Limitations.\u00a0Doesn\u2019t sweat edge cases; for rigorous analysis hand the baton back to Artificer or Strategist."
   },
   {
     "id": "Strategist",
-    "title": "Strategist - GPT 4.1",
+    "title": "Strategist\u2002-\u2002GPT-4.1",
     "front": "Cards/Strategist.jpg",
-    "what": "Successor to GPT-4 Turbo with sharper long-range reasoning.",
-    "why": "Best when the solution’s overall shape matters more than details.",
+    "what": "What it is.\u00a0The flagship successor to GPT-4 Turbo. Same calm prose, sharper long-range sense-making."
+  },
+  {
+    "id": "Why included.\u00a0You keep reaching for it when the\u00a0shape\u00a0of a solution matters more than the pixels",
+    "title": "Why included.\u00a0You keep reaching for it when the\u00a0shape\u00a0of a solution matters more than the pixels-product road-maps, proposal trade-offs, scenario planning.",
+    "front": "Cards/Why included.\u00a0You keep reaching for it when the\u00a0shape\u00a0of a solution matters more than the pixels.jpg",
+    "why": "Plays well with.\u00a0\u2022 Causal diagrams\u2002\u2022 OKR roll-downs\u2002\u2022 Competitive-landscape memos.",
     "when": [
-      "Causal diagrams",
-      "OKR roll-downs",
+      "Causal diagrams\u2002",
+      "OKR roll-downs\u2002",
       "Competitive-landscape memos"
     ],
-    "watch": "Higher token cost; 256 k context ceiling."
+    "watch": "Caveats.\u00a0Costlier tokens than 4o; context still capped at 256 k, so ultra-long docs belong to Oracle."
   },
   {
     "id": "Prodigy",
-    "title": "Prodigy - GPT 4.5 preview",
-    "front": "Cards/Prodigy.jpg",
-    "what": "Early peek at GPT-4.5—smart, capable, and short-lived.",
-    "why": "Let users sample the future before GPT-5 arrives.",
+    "title": "Prodigy\u2002-\u2002GPT-4.5 preview",
+    "front": "Cards/Prodigy.jpg"
+  },
+  {
+    "id": "What it is.\u00a0An early peek at OpenAI\u2019s 4.5",
+    "title": "What it is.\u00a0An early peek at OpenAI\u2019s 4.5-smart, capable, expensive and getting retired soon! Not for long though-expect this to be the backbone of the rumored GPT-5.",
+    "front": "Cards/What it is.\u00a0An early peek at OpenAI\u2019s 4.5.jpg",
+    "why": "Use cases.\u00a0\u2022 Creative writing\u2002\u2022 EQ conversations\u2002\u2022 Writing critique.",
     "when": [
-      "Creative writing",
-      "EQ conversations",
+      "Creative writing\u2002",
+      "EQ conversations\u2002",
       "Writing critique"
     ],
-    "watch": "Preview may vanish without notice."
+    "watch": "Gotchas.\u00a0Preview means it won\u2019t always be here, so enjoy it while it lasts."
   },
   {
     "id": "Polymath",
-    "title": "Polymath - Claude 4 Opus",
+    "title": "Polymath\u2002-\u2002Claude-4 Opus",
     "front": "Cards/Polymath.jpg",
-    "what": "Anthropic’s largest model for graceful prose and complex code.",
-    "why": "Balances technical rigor with executive-ready polish.",
+    "what": "What it is.\u00a0Anthropic\u2019s largest model, famous for graceful prose and strong coding ability, especially complex coding problem-solving."
+  },
+  {
+    "id": "Why included.\u00a0It threads the needle between technical rigor and executive polish",
+    "title": "Why included.\u00a0It threads the needle between technical rigor and executive polish-and plugs straight into Gmail/Calendar in the Claude app.",
+    "front": "Cards/Why included.\u00a0It threads the needle between technical rigor and executive polish.jpg",
+    "why": "Shines at.\u00a0\u2022 Complex refactors written like a consultant\u2019s playbook\u2002\u2022 Policy drafts that actually\u00a0sound human.",
     "when": [
-      "Complex refactors",
-      "Policy drafts",
-      "Consultant-style playbooks"
+      "Complex refactors written like a consultant\u2019s playbook\u2002",
+      "Policy drafts that actually\u00a0sound human"
     ],
-    "watch": "Narrower tool-calling APIs; can stall in long chats."
+    "watch": "Limits.\u00a0Slightly narrower tool-calling APIs than OpenAI; can stall in long chats."
   },
   {
     "id": "Composer",
-    "title": "Composer - Claude 3.5 Sonnet",
+    "title": "Composer\u2002-\u2002Claude 3.5 Sonnet",
     "front": "Cards/Composer.jpg",
-    "what": "Fast mid-tier Claude tuned for on-brand voice and code.",
-    "why": "Speed plus style for live edits and rapid refactors.",
+    "what": "What it is.\u00a0Anthropic\u2019s \u201cmiddle-weight\u201d model: smaller than Opus, faster than anything its size, and trained to keep a lyrical, on-brand voice. Brilliant at composing code."
+  },
+  {
+    "id": "Why included.\u00a0It\u2019s the go-to when you need\u00a0speed plus style",
+    "title": "Why included.\u00a0It\u2019s the go-to when you need\u00a0speed plus style-edit copy live on a call, polish slides minutes before the meeting, or refactor 200 lines of code while stakeholders watch.",
+    "front": "Cards/Why included.\u00a0It\u2019s the go-to when you need\u00a0speed plus style.jpg",
+    "why": "Sweet spots.\u00a0\u2022 Real-time writing coach\u2003\u2022 Tone-matching executive summaries\u2003\u2022 Rapid code patches with clean explanations.",
     "when": [
-      "Real-time writing coach",
-      "Tone-matching executive summaries",
-      "Rapid code patches with explanations"
+      "Real-time writing coach\u2003",
+      "Tone-matching executive summaries\u2003",
+      "Rapid code patches with clean explanations"
     ],
-    "watch": "Hard problems still belong to Opus or Artificer."
+    "watch": "Watch-outs.\u00a0Hard problems still belong to Opus or Artificer; token context tops out sooner than you want."
   },
   {
     "id": "Oracle",
-    "title": "Oracle - Gemini 2.5 Pro / Ultra",
+    "title": "Oracle\u2002-\u2002Gemini 2.5 Pro / Ultra",
     "front": "Cards/Oracle.jpg",
-    "what": "Google flagship with million-token context and fact-checking.",
-    "why": "Only model that can read a mountain of PDFs in one pass.",
+    "what": "What it is.\u00a0Google\u2019s flagship with million-token context and a strong fact-checking layer.",
+    "why": "Shines at.\u00a0\u2022 Cross-checking stats\u2003\u2022 Summarising litigation troves\u2003\u2022 Ingesting entire wikis for \u201cone-pager\u201d outputs.",
     "when": [
-      "Cross-checking stats",
-      "Summarising litigation troves",
-      "Turning whole wikis into one-pagers"
-    ],
-    "watch": "Occasionally over-cautious; have Strategist tighten conclusions."
+      "Cross-checking stats\u2003",
+      "Summarising litigation troves\u2003",
+      "Ingesting entire wikis for \u201cone-pager\u201d outputs"
+    ]
+  },
+  {
+    "id": "Limits.\u00a0Thinks more than 4o, occasionally overly cautious, has a little bit of fuzziness following some instructions",
+    "title": "Limits.\u00a0Thinks more than 4o, occasionally overly cautious, has a little bit of fuzziness following some instructions-have Strategist tighten conclusions.",
+    "front": "Cards/Limits.\u00a0Thinks more than 4o, occasionally overly cautious, has a little bit of fuzziness following some instructions.jpg"
   },
   {
     "id": "Scholar",
-    "title": "Scholar - ChatGPT Deep Research",
+    "title": "Scholar\u2002-\u2002ChatGPT Deep Research",
     "front": "Cards/Scholar.jpg",
-    "what": "OpenAI variant tuned for long, self-directed research runs.",
-    "why": "Acts like a grad-student delivering cited mini literature reviews.",
+    "what": "What it is.\u00a0A special OpenAI variant tuned for long, self-directed research runs (10\u201320 minutes).",
+    "why": "Sweet spots.\u00a0\u2022 Competitive landscapes\u2003\u2022 Historical chronologies\u2003\u2022 \u201cExplain this like I\u2019m new, with sources.\u201d",
     "when": [
-      "Competitive landscapes",
-      "Historical chronologies",
-      "Explain-like-I’m-new reports with sources"
-    ],
-    "watch": "Not interactive in real time."
+      "Competitive landscapes\u2003",
+      "Historical chronologies\u2003",
+      "\u201cExplain this like I\u2019m new, with sources.\u201d"
+    ]
+  },
+  {
+    "id": "Watch-outs.\u00a0Not interactive in real time",
+    "title": "Watch-outs.\u00a0Not interactive in real time-hand the baton back to Companion for quick Q&A.",
+    "front": "Cards/Watch-outs.\u00a0Not interactive in real time.jpg"
   },
   {
     "id": "Prospector",
-    "title": "Prospector - DeepSeek R1",
-    "front": "Cards/Prospector.jpg",
-    "what": "Chinese open model cracking top-10 code benchmarks on a budget.",
-    "why": "High-volume generation or bilingual STEM work without GPT prices.",
+    "title": "Prospector\u2002-\u2002DeepSeek R1",
+    "front": "Cards/Prospector.jpg"
+  },
+  {
+    "id": "What it is.\u00a0A Chinese-led open model that just cracked the top-10 in code benchmarks",
+    "title": "What it is.\u00a0A Chinese-led open model that just cracked the top-10 in code benchmarks-at a fraction of Big-Tech inference cost.",
+    "front": "Cards/What it is.\u00a0A Chinese-led open model that just cracked the top-10 in code benchmarks.jpg",
+    "why": "Use cases.\u00a0\u2022 Bulk code stubs\u2003\u2022 STEM problem sets\u2003\u2022 Bilingual chatbot demos.",
     "when": [
-      "Bulk code stubs",
-      "STEM problem sets",
+      "Bulk code stubs\u2003",
+      "STEM problem sets\u2003",
       "Bilingual chatbot demos"
     ],
-    "watch": "Tough terms of service for US/EU businesses."
+    "watch": "Caveats.\u00a0Slightly lower on scores than o3. More importantly, the Terms of Service aren\u2019t friendly to most US or EU business use-cases."
   },
   {
     "id": "Collective",
-    "title": "Collective - Mixtral 8×22B",
+    "title": "Collective\u2002-\u2002Mixtral 8 \u00d7 22B",
     "front": "Cards/Collective.jpg",
-    "what": "Open Mixture-of-Experts where eight subnetworks vote per token.",
-    "why": "Near-Claude quality while staying fully open-weight.",
+    "what": "What it is.\u00a0An open Mixture-of-Experts (MoE): eight specialist subnetworks \u201cvote\u201d on every token."
+  },
+  {
+    "id": "Why included.\u00a0It delivers near-Claude quality while staying fully open-weight",
+    "title": "Why included.\u00a0It delivers near-Claude quality while staying fully open-weight-ideal for privacy-sensitive or air-gapped deployments.",
+    "front": "Cards/Why included.\u00a0It delivers near-Claude quality while staying fully open-weight.jpg",
+    "why": "Shines at.\u00a0\u2022 Self-hosted knowledge bots\u2003\u2022 On-prem RAG stacks\u2003\u2022 Fast fine-tunes with low GPU budgets.",
     "when": [
-      "Self-hosted knowledge bots",
-      "On-prem RAG stacks",
-      "Fast fine-tunes with low GPU budget"
+      "Self-hosted knowledge bots\u2003",
+      "On-prem RAG stacks\u2003",
+      "Fast fine-tunes with low GPU budgets"
     ],
-    "watch": "MoE routing can misfire; heavier model-loading logistics."
+    "watch": "Limits.\u00a0MoE routing sometimes misfires on niche queries; heavier model-loading logistics than plain Llama."
   },
   {
     "id": "Voyager",
-    "title": "Voyager - Yi-1.5 200B",
+    "title": "Voyager\u2002-\u2002Yi-1.5 200B",
     "front": "Cards/Voyager.jpg",
-    "what": "Large bilingual model (EN/ZH) with permissive license.",
-    "why": "Bridges English and Chinese users without juggling two vendors.",
+    "what": "What it is.\u00a001.AI\u2019s large bilingual model, fluent in English and Chinese and permissively licensed.",
+    "why": "Sweet spots.\u00a0\u2022 Cross-border product copy\u2003\u2022 Dual-language knowledge bases\u2003\u2022 Fine-tunes for APAC markets.",
     "when": [
-      "Cross-border product copy",
-      "Dual-language knowledge bases",
+      "Cross-border product copy\u2003",
+      "Dual-language knowledge bases\u2003",
       "Fine-tunes for APAC markets"
-    ],
-    "watch": "High GPU memory; English tone slightly stiff."
+    ]
+  },
+  {
+    "id": "Watch-outs.\u00a0High GPU memory footprint; English style slightly stiffer than Opus",
+    "title": "Watch-outs.\u00a0High GPU memory footprint; English style slightly stiffer than Opus-polish with Composer if tone matters.",
+    "front": "Cards/Watch-outs.\u00a0High GPU memory footprint; English style slightly stiffer than Opus.jpg"
   },
   {
     "id": "Diplomat",
-    "title": "Diplomat - Cohere Command R+",
+    "title": "Diplomat\u2002-\u2002Cohere Command R+",
     "front": "Cards/Diplomat.jpg",
-    "what": "Enterprise-tuned model optimised for RAG and tool use.",
-    "why": "Plugs straight into long corporate docs and workflows.",
+    "what": "What it is.\u00a0Cohere\u2019s enterprise-tuned model, optimised for Retrieval-Augmented Generation (RAG) and multi-step tool use.",
+    "why": "Plays well with.\u00a0\u2022 Internal knowledge bots\u2003\u2022 Compliance summaries\u2003\u2022 Multi-step workflows.",
     "when": [
-      "Internal knowledge bots",
-      "Compliance summaries",
+      "Internal knowledge bots\u2003",
+      "Compliance summaries\u2003",
       "Multi-step workflows"
     ],
-    "watch": "Better at workflows than marketing copy."
+    "watch": "Limits.\u00a0Designed for workflows more than writing; for marketing copy pair with Companion or Composer."
   },
   {
     "id": "Commons",
-    "title": "Commons - Llama 3 405B",
-    "front": "Cards/Commons.jpg",
-    "what": "Meta’s largest open model—ChatGPT-3.5 quality you can own.",
-    "why": "Default for startups and academia needing control and fine-tunes.",
+    "title": "Commons\u2002-\u2002Llama 3 405B",
+    "front": "Cards/Commons.jpg"
+  },
+  {
+    "id": "What it is.\u00a0Meta\u2019s largest open model",
+    "title": "What it is.\u00a0Meta\u2019s largest open model-basically \u201cChatGPT-3.5 quality, but yours to tinker with.\u201d",
+    "front": "Cards/What it is.\u00a0Meta\u2019s largest open model.jpg",
+    "why": "Use cases.\u00a0\u2022 Private-cloud assistants\u2003\u2022 Domain-specific fine-tunes\u2003\u2022 Academic experiments.",
     "when": [
-      "Private-cloud assistants",
-      "Domain-specific fine-tunes",
+      "Private-cloud assistants\u2003",
+      "Domain-specific fine-tunes\u2003",
       "Academic experiments"
     ],
-    "watch": "No built-in tools API."
+    "watch": "Caveats.\u00a0No built-in tools API; connect external RAG or function-calling layers yourself."
   },
   {
     "id": "Navigator",
-    "title": "Navigator - Mistral Large",
+    "title": "Navigator\u2002-\u2002Mistral Large",
     "front": "Cards/Navigator.jpg",
-    "what": "EU-friendly large model with strong coding and inference.",
-    "why": "Instruction following across many languages at moderate cost.",
-    "when": [
-      "Code generation",
-      "Inference pipelines",
-      "Multi-lingual assistants"
-    ],
-    "watch": "Not a top-3 performer for deep analysis."
+    "what": "What it is.\u00a0A large model cousin to Mixtral; designed for intelligence inference and coding abilities.",
+    "why": "Shines at.\u00a0Instruction following abilities, strong at coding and inference.",
+    "when": [],
+    "watch": "Limits.\u00a0Not a true top 3 model; for heavy analysis use Artificer or Strategist."
   },
   {
     "id": "Maverick",
-    "title": "Maverick - Grok-2",
+    "title": "Maverick\u2002-\u2002Grok-2",
     "front": "Cards/Maverick.jpg",
-    "what": "xAI’s personality-forward model with real-time info access.",
-    "why": "Great for free-wheeling ideation and staying up to date on X.",
+    "what": "What it is.\u00a0xAI\u2019s second generation, personality-forward model with a cheeky tone and access to real-time information.",
+    "why": "Sweet spots.\u00a0\u2022 Brainstorm sessions\u2003\u2022 Solid coding abilities \u2022 Good creative problem-solving sense",
     "when": [
-      "Brainstorm sessions",
-      "Creative problem-solving",
-      "Live coding with humour"
+      "Brainstorm sessions\u2003",
+      "Solid coding abilities",
+      "Good creative problem-solving sense"
     ],
-    "watch": "Can veer informal; known alignment gaps."
+    "watch": "Watch-outs.\u00a0Can veer informal; run final drafts through Composer for polish. No published model card and a number of prominent model alignment issues."
   },
   {
     "id": "Scout",
-    "title": "Scout - Perplexity Sonar",
-    "front": "Cards/Scout.jpg",
-    "what": "Retrieval-native model that always cites sources.",
-    "why": "Fastest way to get a sourced bullet list on short notice.",
+    "title": "Scout\u2002-\u2002Perplexity Sonar",
+    "front": "Cards/Scout.jpg"
+  },
+  {
+    "id": "What it is.\u00a0A retrieval-native model that always cites sources",
+    "title": "What it is.\u00a0A retrieval-native model that always cites sources-think \u201cAI search-engine in a box.\u201d",
+    "front": "Cards/What it is.\u00a0A retrieval-native model that always cites sources.jpg",
+    "why": "Use cases.\u00a0\u2022 Quick news briefs\u2003\u2022 \u201cShow me five recent papers on\u2026\u201d\u2003\u2022 Pre-meeting fact scouting.",
     "when": [
-      "Quick news briefs",
-      "Finding recent papers",
+      "Quick news briefs\u2003",
+      "\u201cShow me five recent papers on\u2026\u201d\u2003",
       "Pre-meeting fact scouting"
     ],
-    "watch": "Depends on live web access; built for search."
+    "watch": "Caveats.\u00a0Depends on live web access, purpose-built for search."
   }
 ]
