@@ -281,7 +281,167 @@ class SimpleCardApp {
   }
 }
 
+// --- MOBILE STACK/SWIPE UI ---
+class MobileStackUI {
+  constructor(cards, natesPicks) {
+    this.cards = cards;
+    this.natesPicks = natesPicks;
+    this.filter = 'all';
+    this.filteredStack = cards;
+    this.currentIndex = 0;
+    this.lastIndexByFilter = { all: 0, picks: 0 };
+    this.setup();
+  }
+
+  setup() {
+    this.stackEl = document.querySelector('.card-stack');
+    this.detailsEl = document.querySelector('.mobile-card-details');
+    this.filterBtns = document.querySelectorAll('.mobile-filter-buttons .filter-btn');
+    this.attachFilterEvents();
+    this.render();
+    this.attachSwipeEvents();
+  }
+
+  attachFilterEvents() {
+    this.filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        this.setFilter(filter);
+      });
+    });
+  }
+
+  setFilter(filter) {
+    if (this.filter === filter) return;
+    this.lastIndexByFilter[this.filter] = this.currentIndex;
+    this.filter = filter;
+    this.filteredStack = filter === 'all'
+      ? this.cards
+      : this.cards.filter(card => this.natesPicks.includes(card.id));
+    // Restore last position if possible, else 0
+    let idx = this.lastIndexByFilter[filter] || 0;
+    if (idx >= this.filteredStack.length) idx = 0;
+    this.currentIndex = idx;
+    this.render();
+  }
+
+  attachSwipeEvents() {
+    let startX = null;
+    let isSwiping = false;
+    this.stackEl.addEventListener('touchstart', e => {
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    });
+    this.stackEl.addEventListener('touchmove', e => {
+      if (!isSwiping || e.touches.length !== 1) return;
+      // Optionally, add drag effect here
+    });
+    this.stackEl.addEventListener('touchend', e => {
+      if (!isSwiping) return;
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0) this.nextCard();
+        else this.prevCard();
+      }
+      isSwiping = false;
+    });
+  }
+
+  nextCard() {
+    const oldIdx = this.currentIndex;
+    this.currentIndex = (this.currentIndex + 1) % this.filteredStack.length;
+    this.animateCard('left', oldIdx, this.currentIndex);
+  }
+
+  prevCard() {
+    const oldIdx = this.currentIndex;
+    this.currentIndex = (this.currentIndex - 1 + this.filteredStack.length) % this.filteredStack.length;
+    this.animateCard('right', oldIdx, this.currentIndex);
+  }
+
+  animateCard(direction, oldIdx, newIdx) {
+    const oldCard = this.createCardElement(this.filteredStack[oldIdx]);
+    const newCard = this.createCardElement(this.filteredStack[newIdx]);
+    oldCard.classList.add('stack-card');
+    newCard.classList.add('stack-card');
+    this.stackEl.innerHTML = '';
+    this.stackEl.appendChild(oldCard);
+    this.stackEl.appendChild(newCard);
+    // Animate out old card
+    requestAnimationFrame(() => {
+      oldCard.classList.add(direction === 'left' ? 'slide-left' : 'slide-right');
+      newCard.style.opacity = '0';
+      newCard.style.transform = `translateX(${direction === 'left' ? '120vw' : '-120vw'})`;
+      requestAnimationFrame(() => {
+        newCard.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s';
+        newCard.style.opacity = '1';
+        newCard.style.transform = '';
+      });
+    });
+    // Animate text
+    this.detailsEl.classList.add('fade-out');
+    setTimeout(() => {
+      this.renderDetails();
+      this.detailsEl.classList.remove('fade-out');
+      this.detailsEl.classList.add('fade-in');
+      setTimeout(() => this.detailsEl.classList.remove('fade-in'), 300);
+    }, 200);
+    setTimeout(() => {
+      this.stackEl.innerHTML = '';
+      this.stackEl.appendChild(newCard);
+    }, 350);
+  }
+
+  render() {
+    this.stackEl.innerHTML = '';
+    if (!this.filteredStack.length) return;
+    const card = this.createCardElement(this.filteredStack[this.currentIndex]);
+    card.classList.add('stack-card');
+    this.stackEl.appendChild(card);
+    this.renderDetails();
+  }
+
+  renderDetails() {
+    if (!this.filteredStack.length) {
+      this.detailsEl.innerHTML = '';
+      return;
+    }
+    const card = this.filteredStack[this.currentIndex];
+    this.detailsEl.innerHTML = `
+      <h2 style="margin:0 0 0.7rem 0; color:var(--highlight); font-size:1.2rem;">${card.title}</h2>
+      <div style="margin-bottom:0.7rem;">${card.description}</div>
+      <div style="font-size:0.98em;">
+        <p><strong>Why:</strong> ${card.usage}</p>
+        <p><strong>When:</strong> ${card.when}</p>
+        <p><strong>Watch:</strong> ${card.watch}</p>
+      </div>
+    `;
+  }
+
+  createCardElement(card) {
+    const container = document.createElement('div');
+    container.className = 'stack-card';
+    const img = document.createElement('img');
+    img.src = card.frontImage;
+    img.alt = card.title;
+    container.appendChild(img);
+    return container;
+  }
+}
+
+// --- END MOBILE STACK/SWIPE UI ---
+
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-  new SimpleCardApp();
+  const app = new SimpleCardApp();
+  // Mobile stack UI
+  if (window.innerWidth <= 700) {
+    app.loadCards().then(() => {
+      new MobileStackUI(app.cards, app.natesPicks);
+    });
+  }
 }); 
